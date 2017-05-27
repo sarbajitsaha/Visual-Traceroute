@@ -13,11 +13,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class IP2Location
 {
-    private static IpAPI service;
+    private static IpAPI service = null;
 
-    public static Call<IPLocation> getLocation(String ip)
+    public static IpAPI getInstance()
     {
-        if(service==null)
+        if(service == null)
         {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
                     .readTimeout(2, TimeUnit.MINUTES)
@@ -26,12 +26,12 @@ public class IP2Location
 
             Retrofit retrofit = new Retrofit.Builder()
                     .client(httpClient.build())
-                    .baseUrl("http://ip-api.com/json/")
+                    .baseUrl("http://www.ip-api.com")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
             service = retrofit.create(IpAPI.class);
         }
-        return service.getLocation(ip);
+        return service;
     }
 }

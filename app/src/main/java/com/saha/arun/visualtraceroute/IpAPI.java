@@ -10,6 +10,6 @@ import retrofit2.http.Path;
 
 public interface IpAPI
 {
-    @GET("{ip}")
+    @GET("/json/{ip}")
     Call<IPLocation> getLocation(@Path("ip") String ip);
 }
