@@ -1,14 +1,8 @@
 package com.saha.arun.visualtraceroute;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Toast;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SplashScreenActivity extends AppCompatActivity
 {
@@ -19,8 +13,11 @@ public class SplashScreenActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        Intent intent = new Intent(SplashScreenActivity.this,MainActivity.class);
+        startActivity(intent);
 
-        IP2Location.getInstance().getLocation("208.80.152.201").enqueue(new Callback<IPLocation>()
+
+        /*IP2Location.getInstance().getLocation("208.80.152.201").enqueue(new Callback<IPLocation>()
         {
             @Override
             public void onResponse(Call<IPLocation> call, Response<IPLocation> response)
@@ -43,7 +40,7 @@ public class SplashScreenActivity extends AppCompatActivity
                 Toast.makeText(SplashScreenActivity.this,"fail",Toast.LENGTH_SHORT).show();
                 Log.e("SPLASH","FAIL");
             }
-        });
+        });*/
 
        /* Intent intent = new Intent(SplashScreenActivity.this,MapsActivity.class);
         double []lat = {-5.0,5.0,10,15,20};
